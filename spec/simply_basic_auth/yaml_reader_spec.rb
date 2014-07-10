@@ -37,11 +37,24 @@ test:
         users_file.unlink
       end
 
-      context 'when given a valid context' do
-        let(:users_context) { 'test' }
+      context 'when given a valid environment' do
+        let(:environment) { 'test' }
         it 'returns a hash of username keys to password values' do
-          expect(subject.users(users_context)).to be_a Hash
-          expect(subject.users(users_context)['test_username']).to eq('test_password')
+          expect(subject.users(environment)).to be_a Hash
+          expect(subject.users(environment)['test_username']).to eq('test_password')
+        end
+      end
+
+      context 'when given an invalid environment' do
+        let(:environment) { 'production' }
+        it 'returns an object' do
+          expect(subject.users(environment)).to_not be_a NilClass
+        end
+
+        it 'returns an object that returns nil for all index operations' do
+          expect(subject.users(environment)['foo']).to be nil
+          expect(subject.users(environment)['bar']).to be nil
+          expect(subject.users(environment)['baz']).to be nil
         end
       end
     end

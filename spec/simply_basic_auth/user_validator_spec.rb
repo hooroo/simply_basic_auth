@@ -21,7 +21,7 @@ module SimplyBasicAuth
             @users = users
           end
 
-          def users(context)
+          def users(environment)
             @users
           end
         end

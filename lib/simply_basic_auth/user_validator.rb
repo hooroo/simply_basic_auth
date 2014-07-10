@@ -4,9 +4,9 @@ require 'simply_basic_auth/yaml_reader'
 module SimplyBasicAuth
   module UserValidator
 
-    def valid_user?(username, password, context)
+    def valid_user?(username, password, environment)
       username.length > 0 && password.length > 0 &&
-        users(context)[username] == password
+        users(environment)[username] == password
     end
 
   end
