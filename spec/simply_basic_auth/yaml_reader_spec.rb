@@ -1,13 +1,8 @@
 require_relative '../spec_helper'
 require 'simply_basic_auth/yaml_reader'
 
-module Rails
-  def self.env
-    'test'
-  end
-end
-
 module SimplyBasicAuth
+
   describe YamlReader do
 
     describe '.users' do
@@ -25,8 +20,16 @@ test:
         end
       end
 
+      let(:harness_class) do
+        Class.new do
+          include SimplyBasicAuth::YamlReader
+        end
+      end
+
+      subject { harness_class.new }
+
       before do
-        expect(described_class).to receive(:users_file).and_return(users_file).at_least(1).times
+        expect(subject).to receive(:users_file).and_return(users_file).at_least(1).times
       end
 
       after :suite do
@@ -34,9 +37,12 @@ test:
         users_file.unlink
       end
 
-      it 'returns a hash of username keys to password values' do
-        expect(described_class.users).to be_a Hash
-        expect(described_class.users['test_username']).to eq('test_password')
+      context 'when given a valid context' do
+        let(:users_context) { 'test' }
+        it 'returns a hash of username keys to password values' do
+          expect(subject.users(users_context)).to be_a Hash
+          expect(subject.users(users_context)['test_username']).to eq('test_password')
+        end
       end
     end
 

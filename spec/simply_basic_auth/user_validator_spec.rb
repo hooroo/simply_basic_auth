@@ -3,20 +3,6 @@ require 'simply_basic_auth/user_validator'
 
 
 module SimplyBasicAuth
-
-  module Testing
-    class Harness
-      include SimplyBasicAuth::UserValidator
-
-      def initialize(users)
-        @users = users
-      end
-
-      def users
-        @users
-      end
-    end
-  end
   describe UserValidator do
 
     describe '#valid_user?' do
@@ -27,9 +13,22 @@ module SimplyBasicAuth
           correct_username => correct_password
         }
       end
+      let(:implementation_class) do
+        Class.new do
+          include SimplyBasicAuth::UserValidator
+
+          def initialize(users)
+            @users = users
+          end
+
+          def users(context)
+            @users
+          end
+        end
+      end
 
       let(:implementation) do
-        Testing::Harness.new(user_hash)
+        implementation_class.new(user_hash)
       end
 
       let(:username) { nil }
@@ -39,7 +38,7 @@ module SimplyBasicAuth
         let(:username) { correct_username }
         let(:password) { correct_password }
         it 'returns true' do
-          expect(implementation.valid_user?(username, password)).to be true
+          expect(implementation.valid_user?(username, password, nil)).to be true
         end
       end
 
@@ -47,7 +46,7 @@ module SimplyBasicAuth
         let(:username) { 'incorrect_username' }
         let(:password) { 'incorrect_password' }
         it 'returns true' do
-          expect(implementation.valid_user?(username, password)).to be false
+          expect(implementation.valid_user?(username, password, nil)).to be false
         end
       end
     end

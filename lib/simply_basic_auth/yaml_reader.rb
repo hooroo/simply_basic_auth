@@ -3,16 +3,14 @@ require 'simply_basic_auth'
 
 module SimplyBasicAuth
   module YamlReader
-    class << self
-      def users
-        YAML.load_file(users_file)[Rails.env]
-      end
+    def users(context)
+      YAML.load_file(users_file)[context]
+    end
 
-      private
+    private
 
-      def users_file
-        SimplyBasicAuth.configuration.users_file
-      end
+    def users_file
+      SimplyBasicAuth.configuration.users_file
     end
   end
 end
