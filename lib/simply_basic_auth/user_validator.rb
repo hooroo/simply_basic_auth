@@ -2,7 +2,7 @@ require 'simply_basic_auth/yaml_reader'
 
 
 module SimplyBasicAuth
-  module HttpAuthenticator
+  module UserValidator
 
     def valid_user?(username, password)
       username.length > 0 && password.length > 0 &&

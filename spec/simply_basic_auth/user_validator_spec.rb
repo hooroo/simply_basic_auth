@@ -1,12 +1,12 @@
 require_relative '../spec_helper'
-require 'simply_basic_auth/http_authenticator'
+require 'simply_basic_auth/user_validator'
 
 
 module SimplyBasicAuth
 
   module Testing
     class Harness
-      include SimplyBasicAuth::HttpAuthenticator
+      include SimplyBasicAuth::UserValidator
 
       def initialize(users)
         @users = users
@@ -17,7 +17,7 @@ module SimplyBasicAuth
       end
     end
   end
-  describe HttpAuthenticator, type: :controller do
+  describe UserValidator do
 
     describe '#valid_user?' do
       let(:correct_username) { 'correct_username' }
