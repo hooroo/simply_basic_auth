@@ -1,6 +1,6 @@
-require 'simple_rails_auth/version'
+require 'simply_basic_auth/version'
 
-module SimpleRailsAuth
+module SimplyBasicAuth
   def self.configuration
     @configuration ||= Configuration.new
   end
@@ -13,7 +13,7 @@ module SimpleRailsAuth
     attr_accessor :users_file
 
     def initialize
-      @users_file = File.join('config', 'simple_rails_auth.yml')
+      @users_file = File.join('config', 'simply_basic_auth.yml')
     end
   end
 end
