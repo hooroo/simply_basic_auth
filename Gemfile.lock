@@ -1,20 +1,38 @@
 PATH
   remote: .
   specs:
-    simply_basic_auth (0.0.1)
+    simply_basic_auth (0.0.0)
       naught (= 1.0.0)
 
 GEM
-  remote: https://rubygems.org/
+  remote: http://gems.in.jqdev.net/
   specs:
+    builder (3.2.2)
     coderay (1.1.0)
     diff-lcs (1.2.5)
+    faraday (0.9.1)
+      multipart-post (>= 1.2, < 3)
+    gem_publisher (0.0.2)
+      bundler
+      geminabox
+    geminabox (0.12.4)
+      builder
+      faraday
+      httpclient (>= 2.2.7)
+      nesty
+      sinatra (>= 1.2.7)
+    httpclient (2.6.0.1)
     method_source (0.8.2)
+    multipart-post (2.0.0)
     naught (1.0.0)
+    nesty (1.0.2)
     pry (0.10.0)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    rack (1.6.4)
+    rack-protection (1.5.3)
+      rack
     rake (10.3.2)
     rspec (3.0.0)
       rspec-core (~> 3.0.0)
@@ -28,14 +46,23 @@ GEM
     rspec-mocks (3.0.2)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.2)
+    sinatra (1.4.6)
+      rack (~> 1.4)
+      rack-protection (~> 1.4)
+      tilt (>= 1.3, < 3)
     slop (3.5.0)
+    tilt (2.0.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   bundler (~> 1.5)
+  gem_publisher (= 0.0.2)
   pry (~> 0.9)
   rake
   rspec (~> 3.0)
   simply_basic_auth!
+
+BUNDLED WITH
+   1.10.5
