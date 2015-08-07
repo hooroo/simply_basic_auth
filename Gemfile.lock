@@ -12,7 +12,7 @@ GEM
     diff-lcs (1.2.5)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
-    gem_publisher (0.0.2)
+    gem_publisher (0.0.7)
       bundler
       geminabox
     geminabox (0.12.4)
@@ -57,8 +57,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.5)
-  gem_publisher (= 0.0.2)
+  bundler (~> 1.10)
+  gem_publisher (= 0.0.7)
   pry (~> 0.9)
   rake
   rspec (~> 3.0)
