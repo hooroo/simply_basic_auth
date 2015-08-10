@@ -1,3 +1,5 @@
+ENV['RACK_ENV'] = 'test'
+
 require 'bundler'
 require 'bundler/setup'
 Bundler.setup
