@@ -1,6 +1,3 @@
-require 'simply_basic_auth/yaml_reader'
-
-
 module SimplyBasicAuth
   module UserValidator
 
