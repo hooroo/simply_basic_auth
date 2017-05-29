@@ -5,7 +5,7 @@ PATH
       naught (= 1.0.0)
 
 GEM
-  remote: http://gems.in.jqdev.net/
+  remote: http://gems.services.jqdev.net/
   specs:
     builder (3.2.2)
     coderay (1.1.0)
@@ -69,4 +69,4 @@ DEPENDENCIES
   simply_basic_auth!
 
 BUNDLED WITH
-   1.10.5
+   1.15.0
