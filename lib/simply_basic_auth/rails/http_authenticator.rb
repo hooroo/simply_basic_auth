@@ -7,9 +7,13 @@ module SimplyBasicAuth
     module HttpAuthenticator
 
       def self.included(base)
-
         base.send(:include, InstanceMethods)
-        base.send(:before_filter, :authenticate!)
+
+        if base.respond_to?(:before_action)
+          base.send(:before_action, :authenticate!)
+        else
+          base.send(:before_filter, :authenticate!)
+        end
       end
 
       module InstanceMethods
