@@ -7,7 +7,7 @@ app:
     LC_CTYPE: en_US.UTF-8
     HEADLESS: "true"
     DOCKER_HOST:
-    BUILDBOX_COMMIT:
+    BUILDKITE_COMMIT:
     BUILD_FARM_RUN:
     # Environments from caller
     RACK_ENV:
@@ -15,8 +15,8 @@ app:
     TASK:
     BUILDKITE_BUILD_NUMBER:
     RSPEC_FORMATTER:
-    BUILDBOX_AGENT_UID:
-    BUILDBOX_AGENT_GID:
+    BUILDKITE_AGENT_UID:
+    BUILDKITE_AGENT_GID:
   volumes:
     - .:/application
   working_dir: /application
